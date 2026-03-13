@@ -1,0 +1,1760 @@
+// accessing the mat ele:
+
+#include <stdio.h>
+
+int main()
+{
+    
+   int mat[2][3]={{10,20,30},{40,50,60}};
+   
+   int trans[3][2]={{0,0},{0,0},{0,0}};
+   
+   int i,j;
+   for(i=0;i<2;i++)
+   {
+       for(j=0;j<3;j++)
+       {
+           trans[j][i]=mat[i][j];
+       }
+   }
+   
+  
+   for(i=0;i<3;i++)
+   {
+       for(j=0;j<2;j++)
+       {
+           printf("%d ",trans[i][j]);
+       }
+       printf("\n");
+   }
+   
+
+    return 0;
+}
+
+=====================================================
+
+
+// accessing the mat ele:
+
+#include <stdio.h>
+
+int main()
+{
+    
+   int mat[2][3]={{10,20,30},{40,50,60}};
+   
+   int trans[3][2]={{0,0},{0,0},{0,0}};
+   
+   int i,j;
+   for(i=0;i<2;i++)
+   {
+       for(j=0;j<3;j++)
+       {
+           trans[j][i]=mat[i][j];
+       }
+   }
+   
+   for(i=0;i<3;i++)
+   {
+       for(j=0;j<2;j++)
+       {
+           printf("%d ",trans[i][j]);
+       }
+       printf("\n");
+   }
+   
+
+    return 0;
+}
+
+
+
+
+=======================================
+
+
+
+
+#include <stdio.h>
+
+int main()
+{
+    int rows1,cols1;
+    printf("Enter the rows and cols of matrix1:\n");
+    scanf("%d %d",&rows1,&cols1);
+    
+    int mat1[rows1][cols1];
+    int i,j;
+    printf("Enter mat1 elements:\n");
+    for(i=0;i<rows1;i++)
+    {
+        for(j=0;j<cols1;j++)
+        {
+            scanf("%d",&mat1[i][j]);
+        }
+    }
+    
+    
+    int rows2,cols2;
+    printf("Enter the rows and cols of matrix2:\n");
+    scanf("%d %d",&rows2,&cols2);
+    printf("Enter mat2 elements:\n");
+    int mat2[rows2][cols2];
+    for(i=0;i<rows2;i++)
+    {
+        for(j=0;j<cols2;j++)
+        {
+            scanf("%d",&mat2[i][j]);
+        }
+    }
+    
+    int result[rows1][cols1];
+    
+    for(i=0;i<rows1;i++)
+    {
+        for(j=0;j<cols1;j++)
+        {
+            result[i][j]=mat1[i][j] + mat2[i][j];
+        }
+    }
+    printf("The Result is: \n");
+    for(i=0;i<rows1;i++)
+    {
+        for(j=0;j<cols1;j++)
+        {
+            printf("%d ",result[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+
+=============================================
+
+
+
+#include <stdio.h>
+#define size 5
+int stack[size];
+int top=-1;
+
+
+
+void push(int data)
+{
+    if(top==size-1)
+    {
+        printf("Stack is Overflow\n");
+    }
+    else{
+        stack[++top]=data;
+    }
+}
+
+
+void pop()
+{
+    if(top==-1)
+    {
+        printf("Stack is Underflow\n");
+    }
+    else{
+        top--;
+    }
+}
+
+void display()
+{
+    if(top==-1)
+    {
+        printf("Stack is Empty\n");
+    }
+    else{
+        for(int i=top;i>=0;i--)
+        {
+            printf("%d ",stack[i]);
+        }
+    }
+}
+
+
+
+int main()
+{
+    push(10);
+    push(20);
+    push(30);
+    push(40);
+    
+    pop();
+    pop();
+    pop();
+    pop();
+    pop();
+    display();
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+TASK
+
+
+//reverse the string using stack
+
+s="hello"
+
+output: olleh
+
+
+
+
+
+
+
+
+
+
+====================================
+
+
+#include<stdio.h>
+#define size 5
+
+int queue[size];
+int rear=-1;
+int front=-1;
+
+void enqueue(int data)
+{
+    if(rear==size-1)
+    {
+        printf("Queue Overflow\n");
+    }
+    else
+    {
+        if(front==-1)
+            front=0;
+        queue[++rear]=data;
+    }
+}
+
+
+void dequeue()
+{
+    if(front==-1 || front>rear)
+    {
+        printf("Queue Undeflow\n");
+    }
+    else{
+        front++;
+    }
+}
+
+void display()
+{
+    if(rear==-1)
+    {
+        printf("Queue is Empty\n");
+    }
+    else{
+        for(int i=front;i<=rear;i++)
+        {
+            printf("%d ",queue[i]);
+        }
+    }
+}
+
+
+int main()
+{
+    
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    enqueue(40);
+    enqueue(50);
+    enqueue(60);
+    dequeue();
+    dequeue();
+    dequeue();
+    dequeue();
+    dequeue();
+    display();
+}
+
+
+
+
+
+=============================
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+int main()
+{
+    struct Node *first=(struct Node*) malloc(sizeof(struct Node));
+    struct Node *second=(struct Node*) malloc(sizeof(struct Node));
+    struct Node *third=(struct Node*) malloc(sizeof(struct Node));
+    struct Node *head;
+    first->data=10;
+    second->data=20;
+    third->data=30;
+    
+    first->next=second;
+    second->next=third;
+    third->next=NULL;
+    head=first;
+    while(head!=NULL)
+    {
+        printf("%d ",head->data);
+        head=head->next;
+    }
+    return 0;
+}
+=============================================
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+void insert(struct Node **head, int data)
+{
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+
+    
+    newNode->data = data;
+    newNode->next = *head;   // Link new node to old head
+    *head = newNode;         // Update head
+    
+}
+
+void display(struct Node *head)
+{
+    struct Node* temp = head;
+    
+    if(head == NULL)
+    {
+        printf("Empty\n");
+        return;
+    }
+
+    while(temp != NULL)
+    {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main()
+{
+    struct Node *head = NULL;
+
+    insert(&head, 10);
+    insert(&head, 20);
+    insert(&head, 30);
+    insert(&head, 40);
+
+    display(head);
+
+    return 0;
+}
+
+
+
+
+
+
+
+=============================================
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node* next;
+};
+
+int main()
+{
+   struct Node* first=(struct Node*)malloc(sizeof(struct Node));
+   struct Node* second=(struct Node*)malloc(sizeof(struct Node));
+   struct Node* third=(struct Node*)malloc(sizeof(struct Node));
+   struct Node* fourth=(struct Node*)malloc(sizeof(struct Node));
+   
+   
+   
+   first->data=10;
+   second->data=20;
+   third->data=30;
+   fourth->data=40;
+   
+   
+   
+   
+   first->next=second;
+   second->next=third;
+   third->next=fourth;
+   fourth->next=NULL;
+   
+   struct Node *head;
+   head=first;
+   while(head!=NULL)
+   {
+       printf("%d->",head->data);
+       head=head->next->next;
+   }
+   
+   
+   
+}
+
+
+
+
+
+
+
+
+
+Apln of Queue 
+
+1. BFS
+2. Online Ticket Booking sys 
+
+
+
+
+
+
+
+
+
+===============================
+
+
+#include <stdio.h>
+#include <stdbool.h>
+
+
+int binarySearch(int n,int arr[],int target,int low,int high)
+{
+    while(low<=high)
+    {
+        int mid=(low+high)/2;
+        if(arr[mid]==target)
+        {
+            return mid;
+        }
+        else if(target<arr[mid])
+        {
+            high=mid-1;
+        }
+        else{
+            low=mid+1;
+        }
+    }
+    return -1;
+   
+    
+}
+
+
+int main()
+{
+    int n=6;
+    int arr[6]={10,20,30,40,50,60};
+    int target=600;
+    int low=0,high=n-1;
+    int result=binarySearch(n,arr,target,low,high);
+    
+    if(result!=-1)
+    {
+        printf("Data Found at %d",result);
+    }
+    else{
+        printf("Data Not Found");
+    }
+
+    return 0;
+}
+
+
+==================================================
+
+// singly LL operations(insert and delete)
+
+#include <stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node*next;
+};
+
+
+
+
+struct Node* insertAtBegin(struct Node *head,int data)
+{
+    struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
+    
+    if(head==NULL)
+    {
+        newNode->data=data;
+        head=newNode;
+    }
+    else{
+        newNode->data=data;
+        newNode->next=head;
+        head=newNode;
+    }
+    return head;
+}
+
+
+
+
+
+
+
+struct Node* deletionAtBegin(struct Node*head)
+{
+    struct Node*temp;
+    temp=head;
+    head=temp->next;
+    free(temp);
+    return head;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+void display(struct Node*head)
+{
+    if(head==NULL)
+    {
+        printf("Empty LL\n");
+    }
+    else{
+        while(head!=NULL)
+        {
+            printf("%d ",head->data);
+            head=head->next;
+        }
+    }
+}
+
+
+int main()
+{
+    struct Node*head=NULL;
+    head=insertAtBegin(head,10);
+    head=insertAtBegin(head,20);
+    head=insertAtBegin(head,30);
+    head=insertAtBegin(head,40);
+    head=insertAtBegin(head,600);
+    
+    head=deletionAtBegin(head);
+    head=deletionAtBegin(head);
+    display(head);
+
+    return 0;
+}
+
+
+===========================
+#include<stdio.h>
+
+int binarySearch(int n,int arr[],int target,int low,int high)
+{
+    while(low<=high)
+    {
+        int mid=(low+high)/2;
+        if(arr[mid]==target)
+        {
+            return mid;
+        }
+        else if(target<arr[mid])
+        {
+            high=mid-1;
+        }
+        else{
+            low=mid+1;
+        }
+    }
+    return -1;
+}
+
+
+int main()
+{
+    int n=6;
+    int arr[6]={10,20,30,40,50,60};
+    int target=600;
+    int low=0;
+    int high=n-1;
+    int result=binarySearch(n,arr,target,low,high);
+    
+    if(result!=-1)
+    {
+        printf("Data found at %d index",result);
+    }
+    else{
+        printf("Not Found");
+    }
+}
+
+
+=========================
+
+
+#include <stdio.h>
+
+
+void selectionSort(int n,int arr[])
+{
+    int i,j,min_ind,temp;
+    for(i=0;i<n;i++)
+    {
+        min_ind=i;
+        for(j=i+1;j<n;j++)
+        {
+            if(arr[j]<arr[min_ind])
+            {
+                min_ind=j;
+            }
+        }
+        temp=arr[i];
+        arr[i]=arr[min_ind];
+        arr[min_ind]=temp;
+    }
+    
+}
+
+
+
+
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int arr[n],i;
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    selectionSort(n,arr);
+    for(i=0;i<n;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+
+    return 0;
+}
+
+=====================================================
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+struct Employee
+{
+    char name[20];
+    int id;
+    float salary;
+    char role[20];
+    char company[20];
+};
+struct Employee emp[100];    // struct array 
+int count=0;
+
+void addEmp()
+{
+    
+    printf("Enter name:\n");
+    scanf("%s",emp[count].name);
+    printf("Enter Id:\n");
+    scanf("%d",&emp[count].id);
+    printf("Enter Salary:\n");
+    scanf("%f",&emp[count].salary);
+    printf("Enter Role:\n");
+    scanf("%s",emp[count].role);
+    printf("Enter Company:\n");
+    scanf("%s",emp[count].company);
+    
+    count++;
+    printf("\nEmployee Added Successfully");
+    
+}
+
+void displayEmpData()
+{
+    printf("Name\t Id\t Salary\t\t Role\t\tCompany\n");
+    for(int i=0;i<count;i++)
+    {
+        printf("%s\t %d\t %.2f\t \t %s\t %s\n",emp[i].name,emp[i].id,emp[i].salary,emp[i].role,emp[i].company);
+    }
+}
+
+
+void searchEmp()
+{
+    int target,found=0;
+    scanf("%d",&target);
+    for(int i=0;i<count;i++)
+    {
+        if(emp[i].id==target)
+        {
+            found=1;
+        }
+    }
+    if(found==1)
+    {
+        printf("Employee Found\n");
+    }
+    else{
+        printf("Not Found in Emp Records\n");
+    }
+}
+
+
+
+void salaryHike()
+{
+    int targetId,found=0;
+    float sal;
+    scanf("%d",&targetId);
+    for(int i=0;i<count;i++)
+    {
+        if(emp[i].id==targetId)
+        {
+            found=1;
+            sal=emp[i].salary;
+        }
+    }
+    if(found==1)
+    {
+        sal+=(sal*30)/100;
+        printf("After hike the new salary is: %.2f\n",sal);
+    }
+    else{
+        printf("Not Found\n");
+    }
+}
+
+
+
+
+// delEmp()
+// updateEmp()
+
+// 
+
+
+
+int main()
+{
+    int d=1;
+    while(d)
+    {
+        printf("***Employee Operations***\n");
+        printf("1. Add Employee\n");
+        printf("2. display Employee\n");
+        printf("3. Search\n");
+        printf("4. Exit\n");
+        printf("5. Hike\n");
+        
+        int choice;
+        printf("Enter your choice\n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            
+            case 1: addEmp();
+            
+            break;
+            case 2: displayEmpData();
+                    
+            break;
+            
+            case 3: searchEmp();
+            break;
+            
+            
+            case 4:
+            d=0;
+            printf("Incorrect Choice");
+            exit;
+            break;
+            case 5: salaryHike();
+            break;
+            
+        }
+        
+    }
+
+    return 0;
+}
+=======================================
+#include <stdio.h>
+#include <string.h>
+
+struct Book
+{
+    int id;
+    char name[50];
+    char author[50];
+    int quantity;
+};
+
+struct Book b[100];
+int count = 0;
+
+void addBook()
+{
+    printf("\nEnter Book ID: ");
+    scanf("%d",&b[count].id);
+
+    printf("Enter Book Name: ");
+    scanf("%s",b[count].name);
+
+    printf("Enter Author Name: ");
+    scanf("%s",b[count].author);
+
+    printf("Enter Quantity: ");
+    scanf("%d",&b[count].quantity);
+
+    count++;
+    printf("\nBook Added Successfully!\n");
+}
+
+void displayBooks()
+{
+    printf("\nID\tName\tAuthor\tQuantity\n");
+
+    for(int i=0;i<count;i++)
+    {
+        printf("%d\t%s\t%s\t%d\n",
+        b[i].id,b[i].name,b[i].author,b[i].quantity);
+    }
+}
+
+void searchBook()
+{
+    int id,found=0;
+
+    printf("\nEnter Book ID to search: ");
+    scanf("%d",&id);
+
+    for(int i=0;i<count;i++)
+    {
+        if(b[i].id==id)
+        {
+            printf("\nBook Found\n");
+            printf("Name: %s\n",b[i].name);
+            printf("Author: %s\n",b[i].author);
+            printf("Quantity: %d\n",b[i].quantity);
+            found=1;
+        }
+    }
+
+    if(found==0)
+        printf("Book not found!\n");
+}
+
+void issueBook()
+{
+    int id;
+
+    printf("\nEnter Book ID to issue: ");
+    scanf("%d",&id);
+
+    for(int i=0;i<count;i++)
+    {
+        if(b[i].id==id)
+        {
+            if(b[i].quantity>0)
+            {
+                b[i].quantity--;
+                printf("Book Issued Successfully!\n");
+            }
+            else
+            {
+                printf("Book not available!\n");
+            }
+            return;
+        }
+    }
+
+    printf("Book not found!\n");
+}
+
+void returnBook()
+{
+    int id;
+
+    printf("\nEnter Book ID to return: ");
+    scanf("%d",&id);
+
+    for(int i=0;i<count;i++)
+    {
+        if(b[i].id==id)
+        {
+            b[i].quantity++;
+            printf("Book Returned Successfully!\n");
+            return;
+        }
+    }
+
+    printf("Book not found!\n");
+}
+
+int main()
+{
+    int choice;
+
+    while(1)
+    {
+        printf("\n--- Library Management System ---\n");
+        printf("1. Add Book\n");
+        printf("2. Display Books\n");
+        printf("3. Search Book\n");
+        printf("4. Issue Book\n");
+        printf("5. Return Book\n");
+        printf("6. Exit\n");
+
+        printf("Enter your choice: ");
+        scanf("%d",&choice);
+
+        switch(choice)
+        {
+            case 1: addBook(); break;
+            case 2: displayBooks(); break;
+            case 3: searchBook(); break;
+            case 4: issueBook(); break;
+            case 5: returnBook(); break;
+            case 6: return 0;
+            default: printf("Invalid choice!\n");
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+============================================
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+
+
+struct RestrauntBillingSys
+{
+    char name[30];
+    float price;
+    int qty;
+    float rating; 
+};
+struct RestrauntBillingSys menu[7];
+int count=0;
+
+
+
+
+
+
+
+
+
+void addItem()
+{
+    printf("Enter name:\n");
+    scanf("%s",menu[count].name);
+    
+    printf("Enter price:\n");
+    scanf("%f",&menu[count].price);
+    
+    printf("Enter qty:\n");
+    scanf("%d",&menu[count].qty);
+    
+    printf("Enter rating:\n");
+    scanf("%f",&menu[count].rating);
+    
+    printf("Item Added Successfully!\n");
+    count++;
+}
+
+
+
+
+
+
+
+//deleteItem()
+
+
+void updateItem()
+{
+    char search_food[10];
+    int found = 0;
+
+    printf("Enter your food: ");
+    scanf("%s", search_food);
+
+    for(int i = 0; i < count; i++)
+    {
+        if(strcmp(search_food, menu[i].name) == 0)
+        {
+            float new_price;
+            printf("Enter new price: ");
+            scanf("%f", &new_price);
+
+            menu[i].price = new_price;
+            printf("Price Updated Successfully\n");
+
+            found = 1;
+            break;
+        }
+    }
+
+    if(found == 0)
+    {
+        printf("Food Not Found\n");
+    }
+}
+//searchItem()
+
+void display()
+{
+    printf("Name\t Price\t Qty\t Rating\n");
+    for(int i=0;i<count;i++)
+    {
+        printf("%s\t %.2f\t %d\t %.1f\n",menu[i].name,menu[i].price,menu[i].qty,menu[i].rating);
+    }
+}
+
+
+int main()
+{
+    int d=1;
+    while(d)
+    {
+        printf("***Menu Operations***\n");
+        printf("1. Add\n");
+        printf("2. Update\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+        
+        
+        int choice;
+        printf("Enter Your Choice:\n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1: addItem();
+            break;
+            case 2: updateItem();
+            break;
+            case 3: display();
+            break;
+            case 4:
+            d=0;
+            printf("Thanu visit again!\n");
+            exit;
+            break;
+            
+        }
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+// biryani        500 
+// haleem         300
+// butter chicken 430
+
+==========================================================
+
+#include <stdio.h>
+
+struct Employee
+{
+    char name[20];
+    char role[20];
+    int id;
+    float salary;
+    char email[20];
+};
+
+struct Employee emp[20];
+int count=0;
+
+
+void add()
+{
+    printf("Enter Id: \n");
+    scanf("%d",&emp[count].id);
+    
+    printf("Enter Name: \n");
+    scanf("%s",emp[count].name);
+    
+    printf("Enter Role: \n");
+    scanf("%s",emp[count].role);
+    
+    printf("Enter Salary: \n");
+    scanf("%f",&emp[count].salary);
+    
+    printf("Enter Email: \n");
+    scanf("%s",emp[count].email);
+    
+    printf("Employee data Added Successfully!\n");
+    count++;
+    
+}
+
+
+
+
+void update()
+{
+    int sid;
+    printf("Enter search id:\n");
+    scanf("%d",&sid);
+    int found=0;
+    
+    for(int i=0;i<count;i++)
+    {
+        if(sid==emp[i].id)
+        {
+            found=1;
+            float new_sal= emp[i].salary+(emp[i].salary)*0.2;
+            printf("after 20% Hike the new sal is: %.2f\n",new_sal);
+        }
+    }
+    if(found==0)
+    {
+        printf("Not Found\n");
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+void deleteEmp()
+{
+    int sid;
+    printf("Enter search id:\n");
+    scanf("%d",&sid);
+    int found=0;
+    
+    for(int i=0;i<count;i++)
+    {
+        if(sid==emp[i].id)
+        {
+            found=1;
+            count--;
+        }
+    }
+    printf("Deleted success");
+    
+}
+
+
+
+
+
+
+
+
+void display()
+{
+    printf("Name\t Id\t Salary\t Role\t Email\n");
+    for(int i=0;i<count;i++)
+    {
+        printf("%s\t %d\t %.2f\t %s\t %s\n",emp[i].name,emp[i].id,emp[i].salary,emp[i].role,emp[i].email);
+    }
+}
+
+
+//search()
+
+
+
+
+int main()
+{
+    
+    int d=1;
+    while(d)
+    {
+        printf("1. Add\n");
+        printf("2. Update\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+        printf("5. Delete\n");
+        
+        int choice;
+        printf("Enter your choice\n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1: add();
+            break;
+            case 2: update();
+            break;
+            case 3: display();
+            break;
+            case 4:
+            printf("Thanku Exit");
+            d=0;
+            break;
+            case 5: deleteEmp();
+            break;
+            
+        }
+    }
+
+
+    return 0;
+}
+
+
+======================================================================
+
+
+
+import java.util.Scanner;
+class ATM
+{
+    String name;
+    private int pin=8866;
+    String card;
+    float inbal=0.0f;
+    
+    public ATM(String name,String card)
+    {
+        this.name=name;
+        this.card=card;
+    }
+    
+    
+    public int getPin()
+    {
+        return this.pin;
+        
+    }
+    
+    public void setPin(int newpin)
+    {
+        this.pin=newpin;
+        System.out.println("Now the new pin is: "+this.pin);
+    }
+    
+    public void deposite(int upin,int amount)
+    {
+        if(upin==this.pin)
+        {
+            if(amount>0)
+            {
+                inbal+=amount;
+                System.out.println("deposite success");
+            }
+            else{
+                System.out.println("amount should be > then 0");
+            }
+        }
+        else{
+            System.out.println("Wrong Pin");
+        }
+    }
+    
+    public void withdraw(int upin,int amount)
+    {
+        if(upin==this.pin)
+        {
+            if(amount<=inbal)
+            {
+                inbal-=amount;
+                System.out.println("Amount Debited Success: "+amount);
+            }
+            else{
+                System.out.println("Insufficient Balance");
+            }
+        }
+        else{
+            System.out.println("Incorrect pin");
+        }
+        
+    }
+    
+    public void checkBalance(int upin)
+    {
+        if(upin==this.pin)
+        {
+            System.out.println("The Balance is: "+this.inbal);    
+        }
+        else{
+            System.out.println("Incorrect Pin");
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        
+        ATM sbi = new ATM("Umer","Debit");
+        
+        
+        boolean d=true;
+        while(d)
+        {
+            System.out.println("1. Deposite");
+            System.out.println("2. Withdraw");
+            System.out.println("3. ChangePin");
+            System.out.println("4. CheckBalance");
+            System.out.println("5. CheckPin");
+            
+            int choice=sc.nextInt();
+            switch(choice)
+            {
+                case 1: sbi.deposite(8866,5000);
+                break;
+                
+                case 2: sbi.withdraw(8866,1000);
+                break;
+                
+                case 3: sbi.setPin(6655);
+                break;
+                
+                case 4: sbi.checkBalance(8866);
+                break;
+                
+                case 5: System.out.println("The new pin is: "+sbi.getPin());
+                break;
+                
+                default:
+                d=false;
+                break;
+            }
+            
+        }
+        
+        
+        
+        
+        System.out.println(sbi.getPin());
+    }
+    
+    
+}
+
+==========================================================================
+
+
+
+
+import java.util.*;
+
+class Book {
+
+    ArrayList<HashMap<String,String>> book_list = new ArrayList<>();
+
+    public void add(String name,String id,String author)
+    {
+        HashMap<String,String> b = new HashMap<>();
+
+        b.put("Name",name);
+        b.put("Id",id);
+        b.put("Author",author);
+
+        book_list.add(b);
+
+        System.out.println("Book Added Successfully");
+    }
+
+    void display()
+    {
+        for(HashMap<String,String> book : book_list)
+        {
+            System.out.println(book);
+        }
+    }
+
+    public void searchBook(String target)
+    {
+        int found = 0;
+
+        for(HashMap<String,String> book : book_list)
+        {
+            if(book.get("Id").equals(target))
+            {
+                found = 1;
+                System.out.println("found");
+                System.out.println(book);
+                break;
+            }
+        }
+
+        if(found == 0)
+        {
+            System.out.println("Book Not Found");
+        }
+    }
+
+    public void deleteBook(String target)
+    {
+        Iterator<HashMap<String,String>> it = book_list.iterator();
+
+        int found = 0;
+
+        while(it.hasNext())
+        {
+            HashMap<String,String> book = it.next();
+
+            if(book.get("Id").equals(target))
+            {
+                it.remove();
+                found = 1;
+                System.out.println("Deleted Successfully");
+                break;
+            }
+        }
+
+        if(found == 0)
+        {
+            System.out.println("Book Not Found to Delete");
+        }
+    }
+    
+    
+   
+    
+
+    public static void main(String args[])
+    {
+        Book b1 = new Book();
+        Scanner sc=new Scanner(System.in);
+        boolean d=true;
+        while(d)
+        {
+            System.out.println("1. Add");
+            System.out.println("2. SEARCH");
+            System.out.println("3. DISPLAY");
+            System.out.println("4. DELETE");
+            
+            int choice=sc.nextInt();
+            String name;
+            String id;
+            String author;
+            
+            switch(choice)
+            {
+                case 1: b1.add(sc.next(),sc.next(),sc.next());
+                break;
+                
+                case 2: b1. searchBook(sc.next());
+                break;
+                
+                case 3: b1.display();
+                break;
+                
+                case 4: b1.deleteBook(sc.next());
+                break;
+                
+                default:
+                d=false;
+                System.out.println("Thanks Exit");
+                break;
+            }
+            
+        }
+        
+        
+        
+        
+        
+
+        
+        // b1.add("Java","J1","J.Gosling");
+
+        // System.out.println("\nAll Books:");
+        // b1.display();
+
+        // System.out.println("\nSearch:");
+        // b1.searchBook("P1");
+
+        // System.out.println("\nDelete:");
+        // b1.deleteBook("P1");
+
+        // System.out.println("\nAfter Delete:");
+        // b1.display();
+    }
+}
+
+
+
+=============================================================
+import java.util.Scanner;
+
+
+class ATM 
+{
+    String card;
+    int pin=1234;
+    float inbal=0.0f;
+    String name;
+    int cid;
+    
+    public ATM(String card,String name,int cid)
+    {
+        this.card=card;
+
+        this.name=name;
+        this.cid=cid;
+    }
+    
+    
+    public void deposit(int upin,int amount)
+    {
+        
+        if(upin==this.pin)
+        {
+            if(amount>0)
+            {
+                inbal+=amount;
+                System.out.println("Amount Credited Successfully ");
+            }
+            else{
+                System.out.println("Amount should be +ve value");
+            }
+        }
+        else{
+            System.out.println("Incorrect Pin");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    public void withdraw(int upin,int amount)
+    {
+        if(upin==this.pin)
+        {
+            if(amount<=inbal)
+            {
+                inbal-=amount;
+                System.out.println("Amount Debited Successfully "+amount);
+            }
+            else{
+                System.out.println("Insufficient Balance");
+            }
+        }
+        else{
+            System.out.println("Incorrect pin");
+        }
+    }
+    
+    
+    
+    public void checkBal(int upin)
+    {
+       if(upin==this.pin)
+        {
+            System.out.println("Current balance is: "+inbal);
+        }
+        else{
+            System.out.println("Wrong Pin");
+        }
+    }
+    
+    
+    public void setPin(int newpin)
+    {
+        this.pin=newpin;
+    }
+    
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        ATM hdfc = new ATM("DebitCard","Umer",123456);
+        
+        boolean d=true;
+        while(d)
+        {
+            System.out.println("1. Deposit");
+            System.out.println("2. Withdraw");
+            System.out.println("3. Check Balance");
+            System.out.println("4. Change Pin");
+            
+            System.out.println("Enter your choice ");
+            int choice=sc.nextInt();
+            
+            int upin;
+            int amount;
+            
+            switch(choice)
+            {
+                
+                
+                case 1: hdfc.deposit(sc.nextInt(),sc.nextInt());
+                break;
+                
+                case 2: hdfc.withdraw(sc.nextInt(),sc.nextInt());
+                break;
+                
+                case 3: hdfc.checkBal(sc.nextInt());
+                break;
+                
+                case 4: hdfc.setPin(sc.nextInt());
+                break;
+                
+                default:
+                d=false;
+                System.out.println("Thanku visit again!");
+                break;
+                
+                
+            }
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			JAVA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
